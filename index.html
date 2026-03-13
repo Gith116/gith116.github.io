@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Free Site</title>
+</head>
+<body>
+
+<h2>Search List</h2>
+<input type="text" id="search" onkeyup="filter()" placeholder="Type to search">
+
+<ul id="items">
+  <li>Apple</li>
+  <li>Banana</li>
+  <li>Pineapple</li>
+  <li>Orange</li>
+  <li>Mango</li>
+</ul>
+
+<script>
+function filter() {
+  let value = document.getElementById("search").value.toLowerCase();
+  document.querySelectorAll("#items li").forEach(item => {
+    item.style.display = item.innerText.toLowerCase().includes(value)
+      ? ""
+      : "none";
+  });
+}
+</script>
+
+</body>
+</html>
