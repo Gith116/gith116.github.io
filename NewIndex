@@ -1,0 +1,21 @@
+<select id="ajaxSearch" placeholder="Search users..."></select>
+<script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
+<script>
+new TomSelect("#ajaxSearch", {
+  valueField: 'id',
+  labelField: 'name',
+  searchField: 'name',
+  load: function(query, callback) {
+    if (!query.length) return callback();
+
+    fetch(`https://your-api.com/search?query=${query}`)
+      .then(response => response.json())
+      .then(data => {
+        callback(data);
+      })
+      .catch(() => {
+        callback();
+      });
+  }
+});
+</script>
